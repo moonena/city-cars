@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>كل السيارات</title>
+  <style>
+    body { font-family: Arial; direction: rtl; padding: 20px; }
+    .car { background: #f4f4f4; margin: 10px 0; padding: 10px; border-radius: 8px; position: relative; }
+    img { max-width: 100%; height: auto; border-radius: 6px; margin-top: 10px; }
+    .delete-btn {
+      background: #d90429;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>كل السيارات المتاحة</h2>
+  <div id="carList"></div>
+
+  <script>
+    let cars = JSON.parse(localStorage.getItem('cars')) || [];
+    const carList = document.getElementById('carList');
+
+    function renderCars() {
+      carList.innerHTML = '';
+      cars.forEach((car, index) => {
+        const div = document.createElement('div');
+        div.className = 'car';
+        div.innerHTML = `
+          <h3>${car.name} - ${car.model}</h3>
+          <p>السنة: ${car.year}</p>
+          <p>السعر: ${car.price} جنيه</p>
+          <p>الحالة: ${car.type}</p>
+          <img src="${car.image}" alt="صورة السيارة">
+          <button class="delete-btn" onclick="deleteCar(${index})">🗑️ حذف</button>
+        `;
+        carList.appendChild(div);
+      });
+    }
+
+    function deleteCar(index) {
+      if (confirm("هل أنت متأكد من حذف هذه السيارة؟")) {
+        cars.splice(index, 1);
+        localStorage.setItem('cars', JSON.stringify(cars));
+        renderCars();
+      }
+    }
+
+    renderCars();
+  </script>
+</body>
+</html>

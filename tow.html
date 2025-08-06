@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>طلب ونش - ستي كارز</title>
+  <style>
+    body { font-family: Arial; direction: rtl; text-align: center; background-color: #fff3cd; }
+    h1 { color: #b85c00; }
+    form {
+      background: white;
+      padding: 20px;
+      margin: 30px auto;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #d35400;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚨 اطلب ونش الآن</h1>
+
+  <form>
+    <label>اسمك</label>
+    <input type="text" placeholder="اكتب اسمك" required>
+
+    <label>رقم الهاتف</label>
+    <input type="tel" placeholder="010xxxxxxxx" required>
+
+    <label>الموقع الحالي</label>
+    <input type="text" placeholder="مثال: طريق السويس - الكيلو 15" required>
+
+    <label>نوع المشكلة</label>
+    <select required>
+      <option value="">اختر</option>
+      <option value="عطل فني">عطل فني</option>
+      <option value="حادث">حادث</option>
+      <option value="نقل السيارة">نقل السيارة</option>
+    </select>
+
+    <button type="submit">إرسال الطلب</button>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة التحكم</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // التحقق إذا المستخدم مسجل دخول ولا لأ
+    if (!localStorage.getItem("loggedIn")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Tahoma', sans-serif;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .welcome {
+      background-color: #dff0d8;
+      padding: 15px;
+      border: 1px solid #b2d8b2;
+      border-radius: 5px;
+      color: #3c763d;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .links a {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .links a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>لوحة التحكم</h1>
+
+    <div class="welcome">
+      👋 مرحباً بك في لوحة التحكم يا <strong id="username-placeholder">...</strong>! <br>
+      سعيدين بعودتك!
+    </div>
+
+    <div class="links">
+      <a href="requests.html">عرض طلبات العملاء</a>
+      <a href="cars.html">بيانات السيارات</a>
+      <a href="index.html">الرجوع للرئيسية</a>
+      <a href="#" onclick="logout()">تسجيل خروج</a>
+    </div>
+  </div>  
+
+  <script>
+    // عرض اسم المستخدم
+    document.addEventListener("DOMContentLoaded", () => {
+      const username = localStorage.getItem("username") || "مستخدم";
+      document.getElementById("username-placeholder").textContent = username;
+    });
+
+    // تسجيل الخروج
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

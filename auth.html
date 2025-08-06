@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>تسجيل الدخول - ستي كارز</title>
+  <script type="module">
+    // استيراد Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    // إعدادات Firebase الخاصة بتطبيقك
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-VOMp3xIdC0eidx7RYNY4nx7-qD2oWkI",
+      authDomain: "city-cars-39404.firebaseapp.com",
+      projectId: "city-cars-39404",
+      storageBucket: "city-cars-39404.appspot.com",
+      messagingSenderId: "989936272400",
+      appId: "1:989936272400:web:13410128a78c4d1b627695",
+      measurementId: "G-FGGBV06PW2"
+    };
+
+    // تشغيل Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // إنشاء حساب
+    window.createAccount = function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("تم إنشاء الحساب بنجاح!");
+          console.log("User:", userCredential.user);
+          // تقدر تنقلي المستخدم لصفحة تانية هنا
+        })
+        .catch((error) => {
+          alert("خطأ: " + error.message);
+          console.error(error);
+        });
+    };
+
+    // تسجيل الدخول
+    window.login = function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("تم تسجيل الدخول!");
+          console.log("User:", userCredential.user);
+          // تقدر تنقلي المستخدم لصفحة تانية هنا
+        })
+        .catch((error) => {
+          alert("خطأ في تسجيل الدخول: " + error.message);
+          console.error(error);
+        });
+    };
+  </script>
+</head>
+<body>
+  <h1>تسجيل الدخول / إنشاء حساب</h1>
+  <input type="email" id="email" placeholder="البريد الإلكتروني" required><br>
+  <input type="password" id="password" placeholder="كلمة المرور" required><br><br>
+  <button onclick="createAccount()">إنشاء حساب</button>
+  <button onclick="login()">تسجيل دخول</button>
+</body>
+</html>

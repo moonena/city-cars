@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>صفحة الصيانة - City Cars</title>
+  <script type="module" src="./maintenance.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      direction: rtl;
+      padding: 20px;
+      background-color: #f8f8f8;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    button.delete {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>الصيانة</h1>
+  
+  <label for="carNumber">رقم السيارة:</label>
+  <input type="text" id="carNumber" placeholder="ادخل رقم السيارة" />
+
+  <button id="addBtn">إضافة السيارة للصيانة</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>رقم السيارة</th>
+        <th>إجراء</th>
+      </tr>
+    </thead>
+    <tbody id="carsTableBody"></tbody>
+  </table>
+</body>
+</html>

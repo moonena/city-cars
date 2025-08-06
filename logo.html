@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>طلب ونش</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .logo-header {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .logo-header img {
+      width: 130px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ اللوجو -->
+  <div class="logo-header">
+    <img src="logo/logo.png" alt="شعار الموقع">
+  </div>
+
+  <div class="container">
+    <h1>طلب خدمة ونش</h1>
+
+    <form action="#" method="post">
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">رقم الهاتف:</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="location">الموقع الحالي:</label>
+      <textarea id="location" name="location" rows="3" required></textarea>
+
+      <label for="carType">نوع السيارة:</label>
+      <input type="text" id="carType" name="carType" required>
+
+      <button type="submit">إرسال الطلب</button>
+    </form>
+
+    <button onclick="location.href='index.html'">رجوع للصفحة الرئيسية</button>
+  </div>
+</body>
+</html>

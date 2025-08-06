@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>بيانات السيارات</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #f0f0f0;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+
+    .form-section input, .form-section select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-section button {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-section button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: red;
+      color: white;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>بيانات السيارات</h1>
+
+  <div class="form-section">
+    <input type="text" id="carName" placeholder="اسم السيارة">
+    <input type="text" id="carModel" placeholder="موديل السيارة">
+    <input type="text" id="carColor" placeholder="لون السيارة">
+    <select id="carStatus">
+      <option value="متاحة">متاحة</option>
+      <option value="في الصيانة">في الصيانة</option>
+      <option value="مؤجرة">مؤجرة</option>
+    </select>
+    <button onclick="addCar()">إضافة السيارة</button>
+  </div>
+
+  <table id="carTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>الاسم</th>
+        <th>الموديل</th>
+        <th>اللون</th>
+        <th>الحالة</th>
+        <th>حذف</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- السيارات المضافة ستظهر هنا -->
+    </tbody>
+  </table>
+
+  <script>
+    let count = 0;
+
+    function addCar() {
+      const name = document.getElementById('carName').value;
+      const model = document.getElementById('carModel').value;
+      const color = document.getElementById('carColor').value;
+      const status = document.getElementById('carStatus').value;
+
+      if (!name || !model || !color) {
+        alert("يرجى إدخال جميع البيانات");
+        return;
+      }
+
+      count++;
+
+      const table = document.getElementById('carTable').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+
+      newRow.innerHTML = `
+        <td>${count}</td>
+        <td>${name}</td>
+        <td>${model}</td>
+        <td>${color}</td>
+        <td>${status}</td>
+        <td><button class="delete-btn" onclick="deleteRow(this)">حذف</button></td>
+      `;
+
+      document.getElementById('carName').value = '';
+      document.getElementById('carModel').value = '';
+      document.getElementById('carColor').value = '';
+      document.getElementById('carStatus').value = 'متاحة';
+    }
+
+    function deleteRow(button) {
+      const row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+  </script>
+
+</body>
+</html>
